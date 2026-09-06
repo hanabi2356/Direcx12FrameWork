@@ -46,7 +46,7 @@
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="TimeManager.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -60,7 +60,7 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="TimeManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
