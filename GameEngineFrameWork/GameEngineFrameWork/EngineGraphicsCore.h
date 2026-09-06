@@ -62,5 +62,8 @@ public:
 	void ShutDown();
 	void OnResize();
 	void FlushCommandQueue();
+
+
+	
 };
 
