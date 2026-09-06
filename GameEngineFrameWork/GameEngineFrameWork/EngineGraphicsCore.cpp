@@ -1,6 +1,7 @@
 #include "EngineGraphicsCore.h"
 
 EngineGraphicsCore::EngineGraphicsCore()
+	:m_clientWidth(1270), m_clientHeight(720)
 {
 }
 

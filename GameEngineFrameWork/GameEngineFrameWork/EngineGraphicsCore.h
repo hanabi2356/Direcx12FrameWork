@@ -47,8 +47,8 @@ private:
 	UINT64 m_currentFence;
 	HANDLE m_fenceEvent;
 
-	int m_clientWidth = 1270;
-	int m_clientHeight = 720;
+	int m_clientWidth = 0;
+	int m_clientHeight = 0;
 	D3D12_VIEWPORT m_screenViewport = {};
 	D3D12_RECT m_scissorRect = {};
 
