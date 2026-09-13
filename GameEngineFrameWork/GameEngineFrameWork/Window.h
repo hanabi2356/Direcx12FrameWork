@@ -5,7 +5,7 @@ using namespace std;
 class Window
 {
 public:
-	Window(HWND hWnd, int width, int height);
+	Window(HINSTANCE hInstance, int width, int height);
 	~Window();
 
 	bool Create();
