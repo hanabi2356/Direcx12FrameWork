@@ -6,7 +6,7 @@ cbuffer FrameConstant : register(b0)
 
 struct VSInput
 {
-    float3 position : POSITIONT;
+    float3 position : POSITION;
     float4 color : COLOR;
 };
 

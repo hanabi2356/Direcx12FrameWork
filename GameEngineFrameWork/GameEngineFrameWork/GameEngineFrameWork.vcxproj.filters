@@ -25,6 +25,9 @@
     <Filter Include="Component">
       <UniqueIdentifier>{953e47c9-e550-4954-a013-39c44ffa0f73}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HLSL">
+      <UniqueIdentifier>{408bf56a-85e7-4c78-a365-32901a05ccb3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -101,6 +104,8 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Shader\Basic.hlsl" />
+    <FxCompile Include="Shader\Basic.hlsl">
+      <Filter>HLSL</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
