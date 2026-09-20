@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\Downloads\d3dx12.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="EngineGraphicsCore.h" />
     <ClInclude Include="framework.h" />
@@ -136,6 +137,7 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="EngineGraphicsCore.cpp" />
     <ClCompile Include="FrameWorkMain.cpp" />
     <ClCompile Include="GameEngineFrameWork.cpp">

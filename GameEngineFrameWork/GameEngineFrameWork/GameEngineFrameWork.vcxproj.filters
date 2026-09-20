@@ -19,6 +19,12 @@
     <Filter Include="Common">
       <UniqueIdentifier>{9ab80276-bef0-4498-9633-628cca9db0b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Render">
+      <UniqueIdentifier>{421d0ddb-3f8f-460d-9e0a-2b1ad7ba26f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component">
+      <UniqueIdentifier>{953e47c9-e550-4954-a013-39c44ffa0f73}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -54,6 +60,9 @@
     <ClInclude Include="InputManager.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineFrameWork.cpp">
@@ -73,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

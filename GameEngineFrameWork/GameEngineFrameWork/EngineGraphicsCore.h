@@ -1,6 +1,17 @@
 #pragma once
 #include"Common.h"
 #include"Singleton.h"
+#include"Camera.h"
+
+using namespace DirectX;
+
+
+
+struct FrameConstant
+{
+	XMMATRIX view;
+	XMMATRIX projection;
+};
 
 class EngineGraphicsCore : public Singleton<EngineGraphicsCore>
 {
@@ -47,6 +58,18 @@ private:
 	UINT64 m_currentFence;
 	HANDLE m_fenceEvent;
 
+	/// <summary>
+	/// Frame CB(Upload Heap)
+	/// </summary>
+	ComPtr<ID3D12Resource> m_frameCB;
+	BYTE* m_frameCBMapped = nullptr;
+	D3D12_GPU_VIRTUAL_ADDRESS m_frameCBGroupAddress = 0;
+
+	ComPtr<ID3D12RootSignature> m_rootSignature;
+	ComPtr<ID3D12PipelineState> m_pso;
+	ComPtr<ID3DBlob> m_vsBlob;
+	ComPtr<ID3DBlob> m_psBlob;
+
 	int m_clientWidth = 0;
 	int m_clientHeight = 0;
 	D3D12_VIEWPORT m_screenViewport = {};
@@ -63,7 +86,34 @@ public:
 	void OnResize();
 	void FlushCommandQueue();
 
+	void BeginFrame(Camera* camera);
+	void Clear(Camera::ClearFlags flag, const XMFLOAT4& color, float depth = 1.0f, UINT8 stencil = 0);
+	void SetViewport(const D3D12_VIEWPORT& viewport);
+	void EndFrame();
 
+	int GetClientWidth() const { return m_clientWidth; }
+	int GetClientHeight() const { return m_clientHeight; }
+
+private:
+	D3D12_CPU_DESCRIPTOR_HANDLE CurrentBackBufferView() const;
+	D3D12_CPU_DESCRIPTOR_HANDLE DepthStencilView() const;
+
+	bool CreateFrameConstantBuffer();
+
+	bool BuildRootSignature();
+
+	/// <summary>
+	/// HLSL 셰이더 파일을 런타임에서 DXIL(DirectX intermediate Language) 바이너리로 컴파일하는 함수
+	/// </summary>
+	/// <param name="file"> hlsl 경로</param>
+	/// <param name="entry"> 진입점 함수 이름(VSMain, PSMain)...</param>
+	/// <param name="target"> 셰이더 프로필 및 버전</param>
+	/// <param name="outBlob">최종 컴파일된 바이너리가 자장될 ID3DBlob 스마트 포인터</param>
+	/// <returns></returns>
+	bool CompileShader(const wchar_t* file, const char* entry, const char* target, ComPtr<ID3DBlob>& outBlob);
+
+	bool BuildPipelineState();
+	
 	
 };
 
