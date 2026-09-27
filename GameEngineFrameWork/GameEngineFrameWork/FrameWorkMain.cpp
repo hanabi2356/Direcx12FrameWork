@@ -3,7 +3,7 @@
 #include"TimeManager.h"
 #include"InputManager.h"
 #include"EngineGraphicsCore.h"
-#include "Camera.h"
+#include"ComponentHeader.h"
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
@@ -34,7 +34,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	camera.SetAspectRatio(static_cast<float>(width) / height);
 	camera.SetPosition(XMVectorSet(0.0f, 1.0f, -5.0f, 1.0f));
 	camera.SetLookAt(XMVectorSet(0.0f, 0.0f, 0.0f, 1.0f));
-	camera.SetBackgroundColor({ 0.0f, 0.2f, 0.4f, 1.0f });
+
+	XMFLOAT4 color = { 1.0f, 1.0f, 1.0f, 1.0f };
+	camera.SetBackgroundColor(color);
+
+	
 
 	while (window.ProcessMessages())
 	{
@@ -63,3 +67,4 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	EngineGraphicsCore::DestroyManager();
 	return 0;
 }
+
