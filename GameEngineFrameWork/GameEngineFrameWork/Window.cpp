@@ -1,8 +1,16 @@
 #include "Window.h"
 #include"InputManager.h"
 #include<windowsx.h>
+#include "imgui.h"
+#include "imgui_impl_win32.h"
+
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND, UINT, WPARAM, LPARAM);
+
 LRESULT CALLBACK Window::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam))
+		return true;
+
 	InputManager* input = InputManager::GetInstance();
 
 	switch (message)

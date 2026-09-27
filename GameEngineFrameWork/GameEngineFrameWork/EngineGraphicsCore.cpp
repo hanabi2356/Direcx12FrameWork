@@ -110,6 +110,12 @@ bool EngineGraphicsCore::Initialize(HWND hWnd, int width, int height)
 	if (FAILED(m_device->CreateDescriptorHeap(&dsvHeapDesc, IID_PPV_ARGS(&m_dsvHeap))))
 		return false;
 
+	D3D12_DESCRIPTOR_HEAP_DESC desc = {};
+	desc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
+	desc.NumDescriptors = 1; // 폰트만이면 1개로 충분
+	desc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
+	m_device->CreateDescriptorHeap(&desc, IID_PPV_ARGS(&m_imguiSrvHeap));
+
 	if (CreateFrameConstantBuffer() == false) return false;
 	if (BuildRootSignature() == false) return false;
 	if (BuildPipelineState() == false) return false;

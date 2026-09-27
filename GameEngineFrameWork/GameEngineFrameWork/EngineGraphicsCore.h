@@ -77,6 +77,9 @@ private:
 
 	DXGI_FORMAT m_backBufferFormat = DXGI_FORMAT_R8G8B8A8_UNORM;
 	DXGI_FORMAT m_depthStencilFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;
+
+	ComPtr<ID3D12DescriptorHeap> m_imguiSrvHeap; // ImGui ÆùÆ® SRV¿ë
+
 public:
 	EngineGraphicsCore();
 	~EngineGraphicsCore();
@@ -93,6 +96,15 @@ public:
 
 	int GetClientWidth() const { return m_clientWidth; }
 	int GetClientHeight() const { return m_clientHeight; }
+
+/// <summary>
+/// Imgui Test
+/// </summary>
+public:
+	ID3D12Device* GetDevice() const { return m_device.Get(); }
+	ID3D12CommandQueue* GetCommandQueue() const { return m_cmdQueue.Get(); }
+	ID3D12GraphicsCommandList* GetCommandList() const { return m_cmdList.Get(); }
+	ID3D12DescriptorHeap* GetImGuiSrvHeap() const { return m_imguiSrvHeap.Get(); }
 
 private:
 	D3D12_CPU_DESCRIPTOR_HANDLE CurrentBackBufferView() const;

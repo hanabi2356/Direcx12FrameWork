@@ -70,6 +70,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)..\SDK\imgui-master;$(SolutionDir)..\SDK\imgui-master\backends;$(ExternalIncludePath)</ExternalIncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -141,6 +145,13 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\SDK\imgui-master\imgui.cpp" />
+    <ClCompile Include="..\..\SDK\imgui-master\imgui_demo.cpp" />
+    <ClCompile Include="..\..\SDK\imgui-master\imgui_draw.cpp" />
+    <ClCompile Include="..\..\SDK\imgui-master\imgui_tables.cpp" />
+    <ClCompile Include="..\..\SDK\imgui-master\imgui_widgets.cpp" />
+    <ClCompile Include="..\..\SDK\imgui-master\backends\imgui_impl_dx12.cpp" />
+    <ClCompile Include="..\..\SDK\imgui-master\backends\imgui_impl_win32.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="EngineGraphicsCore.cpp" />
     <ClCompile Include="FrameWorkMain.cpp" />
